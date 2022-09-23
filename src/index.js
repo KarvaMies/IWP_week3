@@ -19,8 +19,10 @@ async function fetchData() {
   const dataPromise = await fetch(url);
   const dataJSON = await dataPromise.json();
 
-  //index = dataJSON.dataset.dimension.Alue.category.index
-  //console.log(dataJSON.dataset.dimension.Alue.category.label)
+  const url2 =
+    "https://statfin.stat.fi/PxWeb/sq/5e288b40-f8c8-4f1e-b3b0-61b86ce5c065";
+  const employmentPromise = await fetch(url2);
+  const employmentJSON = await employmentPromise.json();
 
   let table = [];
   table = dataJSON.dataset.dimension.Alue.category.label;
@@ -28,6 +30,8 @@ async function fetchData() {
   let municipalities = [];
   let population = [];
   population = dataJSON.dataset.value;
+  let employment = [];
+  employment = employmentJSON.dataset.value;
 
   let amount = 0;
   for (let key in table) {
@@ -35,12 +39,14 @@ async function fetchData() {
     let tr = document.createElement("tr");
     let td1 = document.createElement("td");
     let td2 = document.createElement("td");
+    let td3 = document.createElement("td");
 
-    //console.log("Kaupunki: " + municipalities[i] + "," + population[i]);
     td1.innerText = municipalities[amount];
     td2.innerText = population[amount];
+    td3.innerText = employment[amount];
     tr.appendChild(td1);
     tr.appendChild(td2);
+    tr.appendChild(td3);
 
     municipalityTable.appendChild(tr);
     amount++;
