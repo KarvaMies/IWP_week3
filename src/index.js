@@ -40,13 +40,27 @@ async function fetchData() {
     let td1 = document.createElement("td");
     let td2 = document.createElement("td");
     let td3 = document.createElement("td");
+    let td4 = document.createElement("td");
 
     td1.innerText = municipalities[amount];
     td2.innerText = population[amount];
     td3.innerText = employment[amount];
+
+    let percentage = ((employment[amount] / population[amount]) * 100).toFixed(
+      2
+    );
+    td4.innerText = percentage + "%";
+
+    if (percentage > 45) {
+      tr.classList.add("over45");
+    } else if (percentage < 25) {
+      tr.classList.add("less25");
+    }
+
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);
+    tr.appendChild(td4);
 
     municipalityTable.appendChild(tr);
     amount++;

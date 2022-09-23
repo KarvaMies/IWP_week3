@@ -16,6 +16,14 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
+tr.over45 {
+  background-color: #abffbd;
+}
+
+tr.less25 {
+  background-color: #ff9e9e;
+}
+
 th {
   background-color: #b7d0ff;
   font: bold;
