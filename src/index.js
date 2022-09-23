@@ -26,29 +26,23 @@ async function fetchData() {
   table = dataJSON.dataset.dimension.Alue.category.label;
 
   let municipalities = [];
+  let population = [];
+  population = dataJSON.dataset.value;
 
   let amount = 0;
   for (let key in table) {
     municipalities[amount] = table[key];
-    amount++;
-  }
-  //console.log(municipalities);
-
-  let population = [];
-  population = dataJSON.dataset.value;
-  //console.log(population);
-
-  for (let i = 0; i < amount; i++) {
     let tr = document.createElement("tr");
     let td1 = document.createElement("td");
     let td2 = document.createElement("td");
 
     //console.log("Kaupunki: " + municipalities[i] + "," + population[i]);
-    td1.innerText = municipalities[i];
-    td2.innerText = population[i];
+    td1.innerText = municipalities[amount];
+    td2.innerText = population[amount];
     tr.appendChild(td1);
     tr.appendChild(td2);
 
     municipalityTable.appendChild(tr);
+    amount++;
   }
 }
