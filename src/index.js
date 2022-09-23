@@ -9,7 +9,7 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-const municipalityTable = document.getElementById("municipality");
+const municipalityTable = document.getElementById("tbody");
 
 fetchData();
 
